@@ -93,7 +93,30 @@ public:
     }
 };
 
+class Client{
+    public:
+    vector<GeneralAccount*>generalAcc;
+    vector<DepositableAccount*>depositAcc;
+
+    Client(vector<GeneralAccount*>generalAcc , vector<DepositableAccount*>depositAcc){
+        this->generalAcc = generalAcc;
+        this->depositAcc = depositAcc;
+    }
+
+    void transaction(){
+        for(GeneralAccount* cls : generalAcc){
+            cls->deposit(2000);
+            cls->withdraw(400);
+        }
+        for(DepositableAccount* cls : depositAcc){
+            cls->deposit(500);
+        }
+    }
+};
+
 int main() {
+
+    /*
     // Using polymorphism to call appropriate methods
 
     // Saving Account: supports both deposit and withdraw
@@ -119,6 +142,27 @@ int main() {
     delete saving;
     delete fixed;
     delete current;
+*/
+
+    
+    vector<GeneralAccount*>generalAcc;
+    vector<DepositableAccount*>depositAcc;
+
+    SavingAcc* savingAccount = new SavingAcc();
+    CurrentAcc* CurrentAccount = new CurrentAcc();
+
+    generalAcc.push_back(savingAccount);
+    generalAcc.push_back(CurrentAccount);
+
+
+    FixedAcc* fx = new FixedAcc();
+    depositAcc.push_back(fx);
+
+    Client* cli = new Client(generalAcc , depositAcc);
+
+    cli->transaction();
+
+
 
     return 0;
 }

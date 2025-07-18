@@ -67,7 +67,7 @@ class StoreInDB{
 
 int main(){
     ShoppingCart *cart = new ShoppingCart();
-    ShoppingCardPrinter * printer = new ShoppingCardPrinter(cart);
+    ShoppingCardPrinter *printer = new ShoppingCardPrinter(cart);
 
     Product *p1 = new Product("rice",200);
     Product *p2 = new Product("r3",20);
